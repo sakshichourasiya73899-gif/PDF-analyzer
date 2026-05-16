@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 const doccumentSchema = new mongoose.Schema({
     filename:{
         type:String,
-        required:true
+        required:true,
+        trim:true
     },
     originalName:{
         type:String,
@@ -10,11 +11,14 @@ const doccumentSchema = new mongoose.Schema({
     },
     totalChunks:{
         type:Number,
-        required:true
+        required:true,
+        default:min(1)
+        
     },
     namespace:{
         type:String,
-        required:true 
+        required:true ,
+        unique:true
     }, //used as vectorStore collection name
     
 },{timestamps:true}
